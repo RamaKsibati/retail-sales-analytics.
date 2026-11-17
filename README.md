@@ -2,6 +2,16 @@
 
 **Portfolio case study | Historical online retail data (2010–2011)**
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RamaKsibati/retail-sales-analytics./blob/main/Retail_Sales_Analysis.ipynb)
+
+## Visual overview
+
+![Monthly gross sales, Aug–Nov 2011](images/monthly_sales.svg)
+
+![Top merchandise entries by gross sales](images/top_products.svg)
+
+*Figures are based on the recorded notebook results and show gross sales from positive-value transaction lines. They do not represent net revenue.*
+
 ## Business question
 How did sales change toward the end of 2011, which products contributed to growth, and where was revenue concentrated?
 
@@ -59,7 +69,7 @@ Christmas-labeled products contributed £134,141.58 of the £721,078.31 increase
 - 135,080 missing Customer IDs; retained for aggregate sales analysis, excluded from identified-customer counts.
 - 1,454 missing descriptions; 5,268 exact duplicate rows flagged for review.
 - 10,624 negative-quantity rows, 2,515 zero-price rows, 2 negative-price rows, and 9,288 cancellation-invoice rows in the source data.
-- A single invoice (581483) contained 80,995 units of PAPER CRAFT, LITTLE BIRDIE at £2.08 each, totaling £168,469.60. Excluding this invoice changes product rankings and lowers merchandise gross sales by 1.64%. A matching-return investigation is still pending; do not label it an error or permanently exclude it without verification.
+- A single invoice (581483) contained 80,995 units of PAPER CRAFT, LITTLE BIRDIE at £2.08 each, totaling £168,469.60. Excluding this invoice changes product rankings and lowers merchandise gross sales by 1.64%. The uploaded notebook's return check found no negative-quantity rows for stock code 23843. This does not prove the transaction is valid or rule out adjustments outside this extract; do not label it an error or permanently exclude it without additional verification.
 
 ## Business recommendations
 1. Prepare order processing and inventory for possible late-year volume spikes, while validating the pattern against additional years.
@@ -69,10 +79,16 @@ Christmas-labeled products contributed £134,141.58 of the £721,078.31 increase
 5. Evaluate international markets with profitability and customer metrics, not sales alone.
 
 ## Reproduce
-Open `retail_sales_portfolio.ipynb` in [Google Colab](https://colab.research.google.com/). The notebook downloads the publicly available UCI dataset into the Colab runtime, creates charts, and runs SQL in an in-memory SQLite database. No local Python installation is required.
+Open the main [`Retail_Sales_Analysis.ipynb`](Retail_Sales_Analysis.ipynb) notebook in [Google Colab](https://colab.research.google.com/), or use the **Open in Colab** badge above. The alternate draft notebook is preserved under [`exploration/`](exploration/). The notebook downloads the publicly available UCI dataset into the Colab runtime, creates charts, and runs SQL in an in-memory SQLite database. No local Python installation is required.
 
 ## Limitations
 Historical 2010–2011 data; December 2011 is incomplete. Gross merchandise sales are not net revenue. Product-type filtering is heuristic. Duplicate rows and returns have not been fully reconciled. The user-reported summary metrics above are preserved as initial analysis results and should be compared with the notebook's reproducible outputs.
+
+## Repository guide
+
+- [Main analysis notebook](Retail_Sales_Analysis.ipynb): executed exploratory analysis, sales metrics, visualization, SQL and return checks.
+- [Exploration notebook](exploration/retail_sales_portfolio.ipynb): earlier reproducibility-focused draft, retained for reference.
+- [Charts](images/): visual summaries sourced from the analysis output.
 
 ## Skills demonstrated
 Python · pandas · data cleaning · exploratory data analysis · SQL (SQLite) · aggregation · KPI design · Matplotlib · business storytelling · sensitivity analysis
